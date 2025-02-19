@@ -10,7 +10,7 @@ class MainViewModel : ViewModel() {
     private val categoryRepository = CategoryRepository()
     private val repository = Repository()
 
-    private val _selectedCategory = MutableStateFlow<Category?>(null)
+    private val _selectedCategory = MutableStateFlow<String?>(null)
     val selectedCategory = _selectedCategory.asStateFlow()
 
     private val _selectedPlace = MutableStateFlow<Place?>(null)
@@ -18,9 +18,9 @@ class MainViewModel : ViewModel() {
 
     fun getCategories() = categoryRepository.categories
 
-    fun getPlacesByCategory() = _selectedCategory.value?.let { repository.getPlacesByCategory(it.name) } ?: emptyList()
+    fun getPlacesByCategory() = _selectedCategory.value?.let { repository.getPlacesByCategory(it) } ?: emptyList()
 
-    fun selectCategory(category: Category) {
+    fun selectCategory(category: String) {
         _selectedCategory.value = category
     }
 

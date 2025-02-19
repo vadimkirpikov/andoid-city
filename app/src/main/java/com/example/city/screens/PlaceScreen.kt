@@ -31,12 +31,7 @@ fun PlacesScreen(navController: NavController, viewModel: MainViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(viewModel.selectedCategory.value?.name ?: "") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Назад") // Use a stable icon
-                    }
-                }
+                title = { Text(viewModel.selectedCategory.value ?: "") },
             )
         }
     ) { paddingValues ->
